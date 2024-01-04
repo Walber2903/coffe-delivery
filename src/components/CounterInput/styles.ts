@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const CounterInputContainer = styled.div`
+interface CounterInputContainerProps {
+  size?: "medium" | "small";
+}
+
+export const CounterInputContainer = styled.div<CounterInputContainerProps>`
   flex: 1;
   background: ${({ theme }) => theme.colors["base-button"]};
   display: flex;
@@ -21,6 +25,16 @@ export const CounterInputContainer = styled.div`
   &:focus {
     outline: none;
   }
+
+  ${({ size }) => size === "medium" && 
+    css`
+      padding: 0.5rem;
+    `}
+  
+  ${({ size }) => size === "small" && 
+    css`
+      padding: 0.3rem 0.5rem;
+    `}
 `;
 
 export const IconWrapper = styled.button.attrs({
