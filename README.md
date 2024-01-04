@@ -18,7 +18,7 @@ Here you will find react features and concepts such as:
 - Componentization
 
 ## Application layout
-- [figma](https://www.figma.com/file/KP3EJ61xH3LZNGuwmhuO4M/Coffee-Delivery-%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=0-1&mode=design&t=aVDCxSem5Fx1qKKd-0)
+- The figma for this application can be found at this [link](https://www.figma.com/file/KP3EJ61xH3LZNGuwmhuO4M/Coffee-Delivery-%E2%80%A2-Desafio-React-(Copy)?type=design&node-id=0-1&mode=design&t=aVDCxSem5Fx1qKKd-0).
 
 ![image](https://github.com/Walber2903/coffe-delivery/assets/23461921/7614eb48-ae85-4b72-9ee2-255e4e356115)
 
