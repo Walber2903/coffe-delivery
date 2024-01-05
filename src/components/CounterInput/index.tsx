@@ -3,18 +3,21 @@ import { CounterInputContainer, IconWrapper } from "./styles";
 
 interface CounterInputProps {
   size?: "medium" | "small";
+  quantity: number;
+  onIncrease: () => void;
+  onDecrease: () => void;
 }
 
-export function CounterInput({ size = "medium"}: CounterInputProps) {
+export function CounterInput({ onIncrease, onDecrease, quantity, size = "medium"}: CounterInputProps) {
   return(
     <CounterInputContainer size={size}>
-      <IconWrapper>
+      <IconWrapper disabled={quantity<=1} onClick={onDecrease}>
         <Minus size={14} weight="fill" />
       </IconWrapper>
 
-      <input type="number" readOnly value={1} />
+      <input type="number" readOnly value={quantity} />
 
-      <IconWrapper>
+      <IconWrapper onClick={onIncrease}>
         <Plus size={14} weight="fill" />
       </IconWrapper>
     </CounterInputContainer>
