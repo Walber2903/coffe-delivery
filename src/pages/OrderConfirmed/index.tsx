@@ -4,9 +4,30 @@ import confirmedOrderImage from "../../assets/confirmed-order.svg";
 import { InfoWithIcon } from "../../components/InfoWithIcon";
 import { MapPin, Clock, CurrencyDollar } from "phosphor-react";
 import { useTheme } from "styled-components";
+import { useLocation, useNavigate } from "react-router-dom";
+import { OrderData } from "../Order";
+import { paymentMethods } from "../Order/components/PaymentMethodOptions";
+import { useEffect } from "react";
+
+interface LocationType {
+  state: OrderData;
+}
 
 export function OrderConfirmedPage() {
   const { colors } = useTheme();
+
+  const { state } = useLocation() as unknown as LocationType; 
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!state) {
+      navigate("/")
+    }
+  }, [])
+
+  if(!state) return <></>;
+
   return (
     <OrderConfirmedContainer className="container">
       <div>
@@ -21,9 +42,9 @@ export function OrderConfirmedPage() {
             iconType={colors["brand-purple"]}
             text={
               <RegularText>
-                Delivery in <strong>Riverside Ave, 798</strong>
+                Delivery in <strong>{state.street}, {state.number}</strong>
                 <br />
-                Schenectady - NY 12302
+                {state.city} - {state.state} {state.zip}
               </RegularText>
             }
           />
@@ -47,7 +68,7 @@ export function OrderConfirmedPage() {
               <RegularText>
                 Payment on delivery
                 <br />
-                <strong>Credit Card</strong>
+                <strong>{paymentMethods[state.paymentMethod].label}</strong>
               </RegularText>
             }
           />
